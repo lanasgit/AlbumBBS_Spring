@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Insert title here</title>
+<title>앨범 게시판</title>
 <link rel="stylesheet" type="text/css" href="./css/board_write.css">
 </head>
 
@@ -51,7 +51,7 @@
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td colspan="3"><input type="text" name="mail1" value="" class="board_write_input_100"/> @ <input type="text" name="mail2" value="" class="board_write_input_100"/></td>
+					<td colspan="3"><input type=text name="mail1" value="" class="board_write_input_100"/> @ <input type="text" name="mail2" value="" class="board_write_input_100"/></td>
 				</tr>
 				</table>
 				

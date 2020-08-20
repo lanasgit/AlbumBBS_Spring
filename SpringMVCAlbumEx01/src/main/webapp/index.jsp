@@ -9,7 +9,7 @@
 <body>
 
 <ul>
-	<li><a href="./list.do">list.do</a></li>
+	<li><a href="./list.do">게시판</a></li>
 </ul>
 
 </body>

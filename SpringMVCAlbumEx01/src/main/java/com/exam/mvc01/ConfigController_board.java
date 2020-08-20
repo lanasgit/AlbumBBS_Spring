@@ -26,7 +26,7 @@ import albummodel1.CommentTO;
 public class ConfigController_board {
 	@Autowired
 	private DataSource dataSource;
-	
+
 	@RequestMapping("/list.do")
 	public String boardList(HttpServletRequest request, HttpServletResponse response, Model model) {
 		
@@ -77,7 +77,7 @@ public class ConfigController_board {
 	
 	@RequestMapping("/write_ok.do")
 	public String boardWriteOk(HttpServletRequest request, HttpServletResponse response, Model model) {
-		String uploadPath = "C:/Spring/spring-workspace/SpringMVCAlbumEx01/src/main/webapp/upload/";
+		String uploadPath = "C:/Users/KIM/git/repository4/SpringMVCAlbumEx01/src/main/webapp/upload/";
 		int maxFileSize = 1024 * 1024 * 5;
 		String encType = "utf-8";
 		
@@ -129,7 +129,7 @@ public class ConfigController_board {
 	
 	@RequestMapping("/modify_ok.do")
 	public String boardModifyOk(HttpServletRequest request, HttpServletResponse response, Model model) {
-		String uploadPath = "C:/Spring/spring-workspace/SpringMVCAlbumEx01/src/main/webapp/upload/";
+		String uploadPath = "C:/Users/KIM/git/repository4/SpringMVCAlbumEx01/src/main/webapp/upload/";
 		int maxFileSize = 1024 * 1024 * 5;
 		String encType = "utf-8";
 		
