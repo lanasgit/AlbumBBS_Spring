@@ -13,8 +13,6 @@ public class BoardDAO {
 	private DataSource dataSource = null;
 	private String uploadPath = "C:/Users/KIM/git/repository4/SpringMVCAlbumEx01/src/main/webapp/upload/";
 	
-	public BoardDAO() {}
-	
 	public BoardDAO(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}

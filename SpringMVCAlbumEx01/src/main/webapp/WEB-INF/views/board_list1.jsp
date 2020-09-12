@@ -87,18 +87,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>앨범 게시판</title>
 <link rel="stylesheet" type="text/css" href="./css/board_list.css">
-<style type="text/css">
-<!--
-	.board_pagetab {text-align: center;}
-	.board_pagetab a {text-decoration: none; font: 12px verdana; color: #000; padding: 0 3px 0 3px;}
-	.board_pagetab a:hover {text-decoration: underline; background-color:#f2f2f2;}
-	.on a {font-weight: bold;}
--->
-</style>
 </head>
 
 <body>
 <!-- 상단 디자인 -->
+<div align="right">
+<%
+	if (session.getAttribute("s_id") == null) {
+		//로그아웃 상태
+%>
+				<form action="login.do" method="post" name="lfrm">
+					아이디 <input type="text" name="id" value="" maxlength="15" required />
+					비밀번호 <input type="password" name="password" value="" required />
+					<input type="submit" value="로그인" class="btn_write btn_txt01" style="cursor: pointer;" />
+				</form>
+<%	
+	} else {
+		//로그인 상태
+%>
+				<b>접속중</b> : <%=(String)session.getAttribute("s_id") %>
+				<input type="button" value="로그아웃" class="btn_write btn_txt01" style="cursor: pointer;" onclick="location.href='./logout.do';" />
+<%	
+	}
+%>
+</div>
+
 <div class="contents1"> 
 	<div class="con_title"> 
 		<p style="margin: 0px; text-align: right">
@@ -108,21 +121,31 @@
 	<div class="contents_sub">	
 		<div class="board_top">
 			<div class="bold">
-				<p>총 <span class="txt_orange"><%=totalRecord %></span>건</p>
+				<div>총 <span class="txt_orange"><%=totalRecord %></span>건</div>
 			</div>
-		</div>	
+		</div>
 		
 		<!--게시판-->
 		<table class="board_list">
-		<tr>
-<%=strHtml %>		
-		</tr>
+			<tr>
+			<%=strHtml %>		
+			</tr>
 		</table>
 		<!--//게시판-->	
-		
+<%
+	if (session.getAttribute("s_id") == null) {
+		//로그아웃 상태
+%>
+<%	
+	} else {
+		//로그인 상태
+%>	
 		<div class="align_right">		
 			<input type="button" value="쓰기" class="btn_write btn_txt01" style="cursor: pointer;" onclick="location.href='write.do?cpage=<%=cpage %>'" />
 		</div>
+<%
+	}
+%>
 		<!--페이지넘버-->
 		<div class="paginate_regular">
 <%

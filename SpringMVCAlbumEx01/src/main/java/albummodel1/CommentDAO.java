@@ -6,15 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class CommentDAO {
 	private DataSource dataSource = null;
-	
-	public CommentDAO() {}
 	
 	public CommentDAO(DataSource dataSource) {
 		this.dataSource = dataSource;

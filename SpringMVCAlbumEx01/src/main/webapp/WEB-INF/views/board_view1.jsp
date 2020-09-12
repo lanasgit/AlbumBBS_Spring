@@ -127,7 +127,7 @@
 					<textarea name="ccontent" cols="" rows="" class="coment_input_text"></textarea>
 				</td>
 				<td align="right" class="bg01">
-					<input type="button" id="cbtn" value="댓글등록" class="btn_re btn_txt01" />
+					<input type="button" id="cbtn" value="댓글등록" class="btn_write btn_txt01" style="cursor: pointer;" />
 				</td>
 			</tr>
 			</table>
@@ -137,11 +137,22 @@
 			<div class="align_left">			
 				<input type="button" value="목록" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='list.do?cpage=<%=cpage %>'" />
 			</div>
+<%
+	if (session.getAttribute("s_id") == null) {
+		//로그아웃 상태
+%>
+<%	
+	} else {
+		//로그인 상태
+%>
 			<div class="align_right">
 				<input type="button" value="수정" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='modify.do?cpage=<%=cpage %>&seq=<%=seq %>'" />
 				<input type="button" value="삭제" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='delete.do?cpage=<%=cpage %>&seq=<%=seq %>'" />
 				<input type="button" value="쓰기" class="btn_write btn_txt01" style="cursor: pointer;" onclick="location.href='write.do?cpage=<%=cpage %>'" />
 			</div>	
+<%
+	}
+%>
 		</div>
 		<!--//게시판-->
 	</div>

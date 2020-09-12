@@ -26,7 +26,7 @@ import albummodel1.CommentTO;
 public class ConfigController_board {
 	@Autowired
 	private DataSource dataSource;
-
+	
 	@RequestMapping("/list.do")
 	public String boardList(HttpServletRequest request, HttpServletResponse response, Model model) {
 		
