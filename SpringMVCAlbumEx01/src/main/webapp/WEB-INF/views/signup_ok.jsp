@@ -2,14 +2,13 @@
     pageEncoding="UTF-8"%>
 <%
 	int flag = (Integer)request.getAttribute("flag");
-	String id = request.getParameter("id");
 	
 	out.println("<script type='text/javascript'>");
 	if (flag == 0) {
-		session.setAttribute("s_id", id);
+		out.println("alert('가입되었습니다. 로그인해 주세요.');");
 		out.println("location.href='./list.do';");
 	} else {
-		out.println("alert('아이디와 비밀번호를 확인해주세요');");
+		out.println("alert('사용중인 아이디입니다');");
 		out.println("history.back();");
 	}
 	out.println("</script>");

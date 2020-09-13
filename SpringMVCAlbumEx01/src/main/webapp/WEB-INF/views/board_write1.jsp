@@ -1,6 +1,13 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+//주소창에 주소를 직접 입력하면 로그인하지 않아도 들어가짐. 그 방지 차원으로 시작 부분에서 세션 검사 실행.
+if(session.getAttribute("s_id") == null)   {     
+	out.println("<script type='text/javascript'>");
+	out.println("alert('로그인이 필요합니다.');");
+	out.println("location.href='./list.do';");
+	out.println("</script>");
+} else {
 	String cpage = (String)request.getAttribute("cpage");
 %>
 <!DOCTYPE html>
@@ -29,7 +36,7 @@
 				<table>
 				<tr>
 					<th class="top">글쓴이</th>
-					<td class="top" colspan="3"><input type="text" name="writer" value="" class="board_write_input_100" maxlength="5" /></td>
+					<td class="top" colspan="3"><input type="text" name="writer" value="<%=(String)session.getAttribute("s_id") %>" class="board_write_input_100" maxlength="5" readonly /></td>
 				</tr>
 				<tr>
 					<th>제목</th>
@@ -141,3 +148,6 @@
 	});
 </script>
 </html>
+<%
+   }
+%>

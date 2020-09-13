@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="albummodel1.BoardTO" %>
 <%
+//주소창에 주소를 직접 입력하면 로그인하지 않아도 들어가짐. 그 방지 차원으로 시작 부분에서 세션 검사 실행.
+if(session.getAttribute("s_id") == null)   {     
+	out.println("<script type='text/javascript'>");
+	out.println("alert('로그인이 필요합니다.');");
+	out.println("location.href='./list.do';");
+	out.println("</script>");
+} else {
 	BoardTO to = (BoardTO)request.getAttribute("to");
 	String cpage = (String)request.getAttribute("cpage");
 
@@ -77,3 +84,6 @@
 
 </body>
 </html>
+<%
+   }
+%>

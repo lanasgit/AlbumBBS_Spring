@@ -14,6 +14,37 @@ public class MemberDAO {
 		this.dataSource = dataSource;
 	}
 	
+	public void signUp() {}
+	
+	public int signUpOk(MemberTO to) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int flag = 1;
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			String sql = "insert into member values (?, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, to.getId());
+			pstmt.setString(2, to.getPassword());
+			pstmt.setString(3, to.getName());
+			pstmt.setString(4, to.getEmail());
+			
+			int result = pstmt.executeUpdate();
+			if (result == 1) {
+				flag = 0;
+			} 	
+		} catch (SQLException e) {
+			System.out.println("[에러] : " + e.getMessage());
+		} finally {
+			if (pstmt != null) try {pstmt.close();} catch (SQLException e) {}
+			if (conn != null) try {conn.close();} catch (SQLException e) {}
+		}
+		return flag;
+	}
+	
 	public int logIn(MemberTO to) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -21,6 +21,7 @@
 	
 	//DB 댓글 불러오기
 	StringBuffer strHtml = new StringBuffer();
+	strHtml.append("<table>");
 	for (CommentTO cto : cLists) {
 		String Cwriter = cto.getWriter();
 		String Ccontent = cto.getContent();
@@ -40,6 +41,7 @@
 		strHtml.append("</td>");
 		strHtml.append("</tr>");
 	}
+	strHtml.append("</table>");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -106,18 +108,21 @@
 				</td>
 			</tr>			
 			</table>
+			<!-- 댓글 -->
+				<%=strHtml %>
+			<!-- //댓글 -->
 			
-			<table>
-<%=strHtml %>
-			</table>
-
+<%
+	if (session.getAttribute("s_id") != null) {
+		//로그인 상태
+%>
 			<form action="./comment_write_ok.do" method="post" name="cfrm">
 			<input type="hidden" name="seq" value="<%=seq %>" />
 			<input type="hidden" name="cpage" value="<%=cpage %>" />
 			<table>
 			<tr>
 				<td width="94%" class="coment_re">
-					글쓴이 <input type="text" name="cwriter" maxlength="10" class="coment_input" />&nbsp;&nbsp;
+					글쓴이 <input type="text" name="cwriter" value="<%=(String)session.getAttribute("s_id") %>" maxlength="10" class="coment_input" readonly />&nbsp;&nbsp;
 					비밀번호 <input type="password" name="cpassword" class="coment_input pR10" />&nbsp;&nbsp;
 				</td>
 				<td width="6%" class="bg01"></td>
@@ -137,21 +142,15 @@
 			<div class="align_left">			
 				<input type="button" value="목록" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='list.do?cpage=<%=cpage %>'" />
 			</div>
-<%
-	if (session.getAttribute("s_id") == null) {
-		//로그아웃 상태
-%>
-<%	
-	} else {
-		//로그인 상태
-%>
+
 			<div class="align_right">
 				<input type="button" value="수정" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='modify.do?cpage=<%=cpage %>&seq=<%=seq %>'" />
 				<input type="button" value="삭제" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='delete.do?cpage=<%=cpage %>&seq=<%=seq %>'" />
 				<input type="button" value="쓰기" class="btn_write btn_txt01" style="cursor: pointer;" onclick="location.href='write.do?cpage=<%=cpage %>'" />
 			</div>	
-<%
-	}
+<%	
+	} else {
+		//로그아웃 상태
 %>
 		</div>
 		<!--//게시판-->
@@ -161,3 +160,6 @@
 
 </body>
 </html>
+<%	
+	}
+%>

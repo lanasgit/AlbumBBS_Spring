@@ -18,7 +18,7 @@ table { border-collapse:collapse; border-spacing:0;}
 hr {display:none;}
 
 /* link */
-a:link { color:#666; text-decoration: none; }
+a:link {color:#666; text-decoration:none;}
 a:visited {color:#666; text-decoration: none;}
 a:hover { color:#0b96d4; text-decoration: underline;}
 a:active { color:#0b96d4; text-decoration: none;}

@@ -96,6 +96,9 @@
 	if (session.getAttribute("s_id") == null) {
 		//로그아웃 상태
 %>
+				<div class="align_right">		
+					<input type="button" value="회원가입" style="cursor: pointer;" class="btn_signup" onclick="location.href='signup.do'" />
+				</div>
 				<form action="login.do" method="post" name="lfrm">
 					아이디 <input type="text" name="id" value="" maxlength="15" required />
 					비밀번호 <input type="password" name="password" value="" required />
